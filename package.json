@@ -1,0 +1,26 @@
+{
+  "name": "minter",
+  "version": "0.0.1",
+  "description": "",
+  "dependencies": {
+  },
+  "type": "commonjs",
+  "main": "./src/index.ts",
+  "keywords": [
+  ],
+  "homepage": "https://github.com/nickfrosty/minter#readme",
+  "bugs": {
+    "url": "https://github.com/nickfrosty/minter/issues"
+  },
+  "repository": {
+    "name": "nickfrosty/minter",
+    "type": "git",
+    "url": "https://github.com/nickfrosty/minter"
+  },
+  "contributors": [
+    {
+      "name": "Nick Frostbutter",
+      "url": "https://github.com/nickfrosty"
+    }
+  ]
+}
