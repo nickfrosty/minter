@@ -1,13 +1,32 @@
 {
-  "name": "minter",
-  "version": "0.2.0",
+  "name": "drop-minter",
+  "version": "0.0.1",
   "description": "",
+  "license": "AGPL-3.0",
+  "type": "module",
+  "main": "./src/index.js",
   "dependencies": {
+    "@clack/prompts": "^0.7.0",
+    "@solana-developers/helpers": "^1.5.1",
+    "@solana/spl-account-compression": "^0.2.0",
+    "@solana/spl-token": "^0.4.0",
+    "@solana/spl-token-metadata": "^0.1.2",
+    "@solana/web3.js": "^1.89.1",
+    "commander": "^11.1.0",
+    "dotenv": "^16.4.1",
+    "esrun": "^3.2.26",
+    "picocolors": "^1.0.0"
   },
-  "type": "commonjs",
-  "main": "./src/index.ts",
-  "keywords": [
-  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "yarn build && node ./bin/index.js",
+    "minter": "esrun ./src/index.ts"
+  },
+  "bin": {
+    "minter": "./bin/index.js",
+    "minter-cli": "./bin/index.js"
+  },
+  "keywords": [],
   "homepage": "https://github.com/nickfrosty/minter#readme",
   "bugs": {
     "url": "https://github.com/nickfrosty/minter/issues"
