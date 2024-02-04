@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { errorOutro } from "./lib/cli.js";
+import { errorMessage } from "./lib/cli.js";
 import cliProgram from "./commands/index.js";
 import treeCommand from "./commands/tree.js";
 
@@ -18,7 +18,7 @@ async function main() {
     // display a spacer at the bottom
     console.log();
   } catch (err) {
-    errorOutro("An internal error occurred");
+    errorMessage(err);
   }
 }
 

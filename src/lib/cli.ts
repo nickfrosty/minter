@@ -2,7 +2,7 @@
  * Assorted helper functions and wrappers for working in the CLI
  */
 
-import { log, outro } from "@clack/prompts";
+import { log, note, outro } from "@clack/prompts";
 import { OutputConfiguration } from "commander";
 import picocolors from "picocolors";
 
@@ -39,6 +39,22 @@ export function successOutro(msg: string) {
  */
 export function errorOutro(msg: string) {
   outro(picocolors.bgRed(` ${msg} `));
+  process.exit(1);
+}
+
+/**
+ * Display a error message with using clack
+ * (including a process exit code)
+ */
+export function errorMessage(err: any, title: string = "An error occurred") {
+  let message = "Unknown error";
+
+  if (err instanceof Error) {
+    message = err.message;
+  }
+
+  note(`${message}`, picocolors.bgRed(` ${title} `));
+  console.log();
   process.exit(1);
 }
 
