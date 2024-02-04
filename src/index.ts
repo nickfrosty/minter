@@ -2,6 +2,7 @@
 
 import { errorMessage } from "./lib/cli.js";
 import cliProgram from "./commands/index.js";
+import configCommand from "./commands/config.js";
 import treeCommand from "./commands/tree.js";
 
 async function main() {
@@ -11,7 +12,7 @@ async function main() {
 
     const program = cliProgram();
 
-    program.addCommand(treeCommand());
+    program.addCommand(treeCommand()).addCommand(configCommand());
 
     await program.parseAsync();
 
