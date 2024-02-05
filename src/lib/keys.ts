@@ -61,12 +61,16 @@ export function getKeypairFromFile(filepath?: string) {
 /**
  * Load a specific keypair from the config directory
  */
-export function getLocalKeypair(publicKey: PublicKey) {
+export function getLocalKeypair(publicKey: PublicKey | string) {
+  if (publicKey instanceof PublicKey) {
+    publicKey = publicKey.toBase58();
+  }
+
   return getKeypairFromFile(
     path.join(
       getLocalConfigDirPath(),
       CONFIG_SUBDIR_FOR_KEYS,
-      `${publicKey.toBase58()}.json`,
+      `${publicKey}.json`,
     ),
   );
 }
