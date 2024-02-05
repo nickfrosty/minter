@@ -90,18 +90,27 @@ export function getLocalConfig(configFile: ConfigFileName = "config.json") {
  */
 export function getDefaultConfigContents(configFile: ConfigFileName) {
   if (configFile == "config.json") {
-    return {
-      "// note": "This is your drop-minter config file",
-      "// docs": "Learn more on https://drop.site",
+    const config: MasterConfig = {
       selectedCluster: "devnet",
       rpcUrl: {
         "mainnet-beta": "https://api.mainnet-beta.solana.com",
         devnet: "https://api.devnet.solana.com",
         testnet: "https://api.testnet.solana.com",
       },
-    } as MasterConfig;
+      wallet: "",
+
+      // @ts-ignore
+      "// note": "This is your drop-minter master config file",
+      "// docs": "Learn more on https://drop.site",
+    };
+    return config;
   } else if (configFile == "trees.json") {
-    return {};
+    const config = {
+      // @ts-ignore
+      "// note": "This is your drop-minter tree config file",
+      "// docs": "Learn more on https://drop.site",
+    };
+    return config;
   }
 
   throw Error("Unknown config file name");

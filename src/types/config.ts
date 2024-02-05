@@ -15,4 +15,6 @@ export type MasterConfig = {
   rpcUrl: {
     [name in Cluster]: string;
   };
+  /** the default local wallet for the cli to use  */
+  wallet: string;
 };
