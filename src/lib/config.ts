@@ -10,6 +10,8 @@ import picocolors from "picocolors";
 import { log } from "@clack/prompts";
 // prettier-ignore
 import type { ConfigFileName, MasterConfig } from "@/types/config.js";
+// prettier-ignore
+import { createLocalKeypair } from "@/lib/keys.js";
 
 /**
  * Get the default config file's path
@@ -73,7 +75,7 @@ export function getLocalConfig(configFile: ConfigFileName = "config.json") {
 
     fs.writeFileSync(
       path.join(configDir, configFile),
-      JSON.stringify(getDefaultConfigContents(configFile)),
+      JSON.stringify(defaultConfig),
       {
         encoding: "utf-8",
       },
@@ -97,12 +99,13 @@ export function getDefaultConfigContents(configFile: ConfigFileName) {
         devnet: "https://api.devnet.solana.com",
         testnet: "https://api.testnet.solana.com",
       },
-      wallet: "",
+      wallet: createLocalKeypair().toBase58(),
 
       // @ts-ignore
       "// note": "This is your drop-minter master config file",
       "// docs": "Learn more on https://drop.site",
     };
+
     return config;
   } else if (configFile == "trees.json") {
     const config = {
