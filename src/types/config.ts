@@ -1,4 +1,4 @@
-import type { Cluster } from "@solana/web3.js";
+import type { Cluster, Keypair } from "@solana/web3.js";
 
 /**
  * Supported configuration file names
@@ -17,4 +17,5 @@ export type MasterConfig = {
   };
   /** the default local wallet for the cli to use  */
   wallet: string;
+  walletKeypair?: Keypair;
 };
