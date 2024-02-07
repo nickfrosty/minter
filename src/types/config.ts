@@ -40,4 +40,8 @@ export type TreeMetadata = {
   maxDepth: number;
   maxBufferSize: number;
   canopyDepth: number;
+  /** max capacity of the tree */
+  maxCapacity: number;
+  /** track if the specific tree has been filled to full capacity */
+  isFull?: boolean;
 };
