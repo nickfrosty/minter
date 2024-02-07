@@ -9,7 +9,7 @@ import picocolors from "picocolors";
 // prettier-ignore
 import { log } from "@clack/prompts";
 // prettier-ignore
-import type { ConfigFileName, MasterConfig } from "@/types/config.js";
+import type { ConfigFileName, MasterConfig, TreeConfig } from "@/types/config.js";
 // prettier-ignore
 import { createLocalKeypair } from "@/lib/keys.js";
 
@@ -109,7 +109,8 @@ export function getDefaultConfigContents(configFile: ConfigFileName) {
 
     return config;
   } else if (configFile == "trees.json") {
-    const config = {
+    const config: TreeConfig = {
+      trees: [],
       // @ts-ignore
       "// note": "This is your drop-minter tree config file",
       "// docs": "Learn more on https://drop.site",
