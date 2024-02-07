@@ -79,7 +79,7 @@ export function getLocalKeypair(publicKey: PublicKey | string) {
  * Create a new local keypair (or use the one provided),
  * saving it to the correct local config dir
  */
-export function createLocalKeypair(keypair: Keypair = Keypair.generate()) {
+export function saveLocalKeypair(keypair: Keypair = Keypair.generate()) {
   const dirPath = path.join(getLocalConfigDirPath(), CONFIG_SUBDIR_FOR_KEYS);
 
   try {

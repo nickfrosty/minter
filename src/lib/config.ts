@@ -11,7 +11,7 @@ import { log } from "@clack/prompts";
 // prettier-ignore
 import type { ConfigFileName, MasterConfig, TreeConfig } from "@/types/config.js";
 // prettier-ignore
-import { createLocalKeypair } from "@/lib/keys.js";
+import { saveLocalKeypair } from "@/lib/keys.js";
 
 /**
  * Get the default config file's path
@@ -125,7 +125,7 @@ export function getDefaultConfigContents(configFile: ConfigFileName) {
         testnet: "https://api.testnet.solana.com",
         localnet: "http://127.0.0.1:8899",
       },
-      wallet: createLocalKeypair().toBase58(),
+      wallet: saveLocalKeypair().toBase58(),
 
       // @ts-ignore
       "// note": "This is your drop-minter master config file",
