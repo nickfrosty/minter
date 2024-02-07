@@ -89,7 +89,7 @@ export function createLocalKeypair(keypair: Keypair = Keypair.generate()) {
 
     writeFileSync(
       path.join(dirPath, `${keypair.publicKey.toBase58()}.json`),
-      JSON.stringify(keypair),
+      `[${keypair.secretKey.toString()}]`,
       "utf-8",
     );
 
