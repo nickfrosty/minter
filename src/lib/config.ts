@@ -98,6 +98,7 @@ export function getDefaultConfigContents(configFile: ConfigFileName) {
         "mainnet-beta": "https://api.mainnet-beta.solana.com",
         devnet: "https://api.devnet.solana.com",
         testnet: "https://api.testnet.solana.com",
+        localnet: "http://127.0.0.1:8899",
       },
       wallet: createLocalKeypair().toBase58(),
 
