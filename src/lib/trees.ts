@@ -1,30 +1,37 @@
 // prettier-ignore
-import { ALL_DEPTH_SIZE_PAIRS } from "@solana/spl-account-compression";
+import { ALL_DEPTH_SIZE_PAIRS, ValidDepthSizePair } from "@solana/spl-account-compression";
 
 /**
  * Compute the lowest `maxDepth` for a tree for the provided `capacity` of leaves
  */
-export function getTreeDepthForCapacity(capacity: number): number {
-  let maxDepth = ALL_DEPTH_SIZE_PAIRS[0].maxDepth;
+export function getTreeDepthForCapacity(
+  capacity: number,
+): ValidDepthSizePair["maxDepth"] {
+  const sortedAllPairs = ALL_DEPTH_SIZE_PAIRS.sort(
+    (a, b) => a.maxDepth - b.maxDepth,
+  );
 
-  for (let i = 0; i <= ALL_DEPTH_SIZE_PAIRS.length; i++) {
-    if (Math.pow(2, ALL_DEPTH_SIZE_PAIRS[i].maxDepth) >= capacity) {
-      maxDepth = ALL_DEPTH_SIZE_PAIRS[i].maxDepth;
-      break;
+  if (
+    capacity > Math.pow(2, sortedAllPairs[sortedAllPairs.length - 1].maxDepth)
+  ) {
+    throw Error("Tree capacity is too high");
+  }
+
+  for (let i = 0; i <= sortedAllPairs.length; i++) {
+    if (Math.pow(2, sortedAllPairs[i].maxDepth) >= capacity) {
+      return sortedAllPairs[i].maxDepth;
     }
   }
 
-  if (Math.pow(2, maxDepth) <= capacity) {
-    throw Error("Tree max depth calculation error");
-  }
-
-  return maxDepth;
+  throw Error("Unable to calculate tree depth for a capacity");
 }
 
 /**
  * Get the list of available `maxBufferSize` for a given `maxDepth`
  */
-export function getTreeBufferSizesForDepth(maxDepth: number): number[] {
+export function getTreeBufferSizesForDepth(
+  maxDepth: number,
+): ValidDepthSizePair["maxBufferSize"][] {
   return ALL_DEPTH_SIZE_PAIRS.filter((pair) => pair.maxDepth == maxDepth).map(
     (pair) => pair.maxBufferSize,
   );
