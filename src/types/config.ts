@@ -39,5 +39,5 @@ export type TreeMetadata = {
   creationSignature: string;
   maxDepth: number;
   maxBufferSize: number;
-  canopy: number;
+  canopyDepth: number;
 };
