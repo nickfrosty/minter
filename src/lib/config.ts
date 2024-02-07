@@ -72,18 +72,43 @@ export function getLocalConfig(configFile: ConfigFileName = "config.json") {
   // since we could not open the file, we will create the default file
   try {
     const defaultConfig = getDefaultConfigContents(configFile);
+    saveLocalConfig(configFile, defaultConfig);
+    return defaultConfig;
+  } catch (err) {
+    throw Error(`Unable to create config file: ${configFile}`);
+  }
+}
 
+/**
+ * Save a config file, fully overwriting the current contents
+ */
+export function saveLocalConfig(
+  configFile: ConfigFileName,
+  newContents: object,
+) {
+  const configDir = getLocalConfigDirPath();
+
+  // todo: attempt to open the desired config file for appending to?
+  // try {
+  //   fs.readFileSync(path.join(configDir, configFile), {
+  //     encoding: "utf-8",
+  //   });
+  // } catch (err) {
+  //   throw Error(`Unable to read config file: ${configFile}`);
+  // }
+
+  try {
     fs.writeFileSync(
       path.join(configDir, configFile),
-      JSON.stringify(defaultConfig),
+      JSON.stringify(newContents),
       {
         encoding: "utf-8",
       },
     );
 
-    return defaultConfig;
+    return true;
   } catch (err) {
-    throw Error(`Unable to create config file: ${configFile}`);
+    throw Error(`Unable to write config file: ${configFile}`);
   }
 }
 
