@@ -14,6 +14,11 @@ import { getLocalConfig, printConfigSettings } from "@/lib/config.js";
  * Manage configuration settings loaded by this CLI tool
  */
 export default function configCommand() {
+  // set the default action: `help` (without an error)
+  if (process.argv.length === 3) {
+    process.argv.push("--help");
+  }
+
   return new Command("config")
     .configureOutput(cliOutputConfig)
     .description("Manage your configuration settings")

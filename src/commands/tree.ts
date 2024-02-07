@@ -21,6 +21,11 @@ import { getExplorerLink } from "@solana-developers/helpers";
  * the `tree` command used to used to create and manage merkle trees
  */
 export default function treeCommand() {
+  // set the default action: `help` (without an error)
+  if (process.argv.length === 3) {
+    process.argv.push("--help");
+  }
+
   return new Command("tree")
     .configureOutput(cliOutputConfig)
     .description("Create and manage merkle trees for cNFTs")

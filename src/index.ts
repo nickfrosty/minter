@@ -14,6 +14,11 @@ async function main() {
 
     program.addCommand(treeCommand()).addCommand(configCommand());
 
+    // set the default action: `help` (without an error)
+    if (process.argv.length === 2) {
+      process.argv.push("--help");
+    }
+
     await program.parseAsync();
 
     // display a spacer at the bottom
