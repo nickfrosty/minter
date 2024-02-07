@@ -72,8 +72,6 @@ const treeCreateCommand = new Command("create")
 
     const maxDepth = getTreeDepthForCapacity(options.quantity);
 
-    console.log("maxDepth:", maxDepth);
-
     const availableBufferSizes = getTreeBufferSizesForDepth(maxDepth);
 
     // todo: have the user select a desired max buffer size
