@@ -1,29 +1,21 @@
 {
-  // Change this to match your project
   "include": ["src/**/*"],
   "compilerOptions": {
-    // Tells TypeScript to read JS files, as
-    // normally they are ignored as source files
-    "allowJs": true,
-    // Generate d.ts files
-    "declaration": true,
-    // Types should go into this directory.
-    // Removing this would place the .d.ts files
-    // next to the .js files
+    "rootDir": "./",
     "outDir": "bin",
-    // go to js file when using IDE functions like
-    // "Go to Definition" in VSCode
-    "declarationMap": true,
-
-    "resolveJsonModule": true,
 
     "target": "es2022",
-    "moduleResolution": "nodeNext",
-    "module": "nodeNext",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "allowJs": true,
+    "checkJs": true,
+
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+
+    "noEmit": true,
     "strict": false,
-    "skipLibCheck": true,
+    "useUnknownInCatchVariables": false,
 
     "baseUrl": "./src",
     "paths": {
